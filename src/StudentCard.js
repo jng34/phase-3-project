@@ -1,8 +1,15 @@
 import React from 'react';
 
-function StudentCard() {
+function StudentCard({ students }) {
+    const { id, name, profile_img, feeling } = students
+
     return (
-       <h1>Display student cards here</h1> 
+       <div>
+            <p>id: {id}</p>
+            <p>{name}</p>
+            <p>feeling: {feeling}</p>
+            <img src={profile_img} />
+       </div>
     )
 }
 

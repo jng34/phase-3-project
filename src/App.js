@@ -1,14 +1,13 @@
 // import logo from './logo.svg';
 import './App.css';
-import './Students';
+import './Users';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
 import Header from './Header';
 import Home from './Home';
 import About from './About';
-import Students from './Students'
-import StudentCard from './StudentCard';
+import Users from './Users'
 
 
 function App() {
@@ -21,8 +20,8 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/students">
-          <Students />
+        <Route exact path="/users">
+          <Users />
         </Route>
         <Route exact path="/about">
           <About />

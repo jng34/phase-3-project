@@ -23,7 +23,10 @@ function Main() {
     useEffect(() => {
         fetch('http://localhost:9292/users')
         .then(res => res.json())
-        .then(data => setUsers(data));
+        .then(data => {
+            console.log(data)
+            setUsers(data)
+        });
 
         fetch('http://localhost:9292/emojis')
         .then(res => res.json())
@@ -55,8 +58,10 @@ function Main() {
     }
 
     const renderUsers = users.map((user) => (
-        <UserCard key={user.id} user_id={user.id} name={user.username} image={user.image} emoji_id={user.emoji_id} drink_id={user.drink_id} emojis={emojis} drinks={drinks} handleDelete={handleDelete}/>
+        <UserCard key={user.id} user_id={user.id} name={user.username} image={user.image} emoji={user.emoji} drink={user.drink} handleDelete={handleDelete}/>
     ))
+
+    // emoji_id={user.emoji_id}, drink_id={user.drink_id} emojis={emojis} drinks={drinks
 
     const renderDrinks = drinks.map((drink) => (
         <div key={drink.id}>

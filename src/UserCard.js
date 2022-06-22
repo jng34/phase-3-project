@@ -2,7 +2,7 @@ import React from 'react';
 import { useDrag } from 'react-dnd';
 
 
-function UserCard({ user_id, name, image, emojis, drinks, emoji_id, drink_id, handleDelete }) {
+function UserCard({ user_id, name, image, emoji, drink, handleDelete }) {
     //making card draggable
     const [{ isDragging }, dragRef] = useDrag({
         type: 'user',
@@ -14,12 +14,12 @@ function UserCard({ user_id, name, image, emojis, drinks, emoji_id, drink_id, ha
 
 
     //problem
-    let emoji ={}
-    let drink ={}
-    if(emojis.length != 0 && drinks.length != 0){
-        emoji = emojis.find(({id}) => id === emoji_id )
-        drink = drinks.find(({id}) => id === drink_id);
-    }
+    // let emoji ={}
+    // let drink ={}
+    // if(emojis.length != 0 && drinks.length != 0){
+    //     emoji = emojis.find(({id}) => id === emoji_id )
+    //     drink = drinks.find(({id}) => id === drink_id);
+    // }
 
     // let emoji = emojis.find(({id}) => id === emoji_id )
     // let drink = drinks.find(({id}) => id === drink_id);

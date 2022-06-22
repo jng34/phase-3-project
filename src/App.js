@@ -2,6 +2,8 @@
 import './App.css';
 import './Users';
 import { Route, Switch } from 'react-router-dom';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
 import Header from './Header';
@@ -16,17 +18,19 @@ function App() {
       <Header />
       <NavBar />
       <hr/>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/users">
-          <Users />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-      </Switch>
+      <DndProvider backend={HTML5Backend}>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/users">
+            <Users />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </DndProvider>
     </div>
   );
 }

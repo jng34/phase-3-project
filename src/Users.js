@@ -5,7 +5,7 @@ function Users() {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:9292/users')
+        fetch('http://localhost:9292/emojis')
         .then(res => res.json())
         .then(data => {
             console.log(data);

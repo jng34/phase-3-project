@@ -1,15 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useDrop } from 'react-dnd';
+import UserCard from './UserCard';
 
-function Drinks() {
+
+function Main() {
     const [singleUser, setSingleUser] = useState({})
     const [users, setUsers] = useState([]);
     const [drinks, setDrinks] = useState([]);
     const [emojis, setEmojis] = useState([]);
 
+    //create drop target
+    // const [{ isOver }, dropRef] = useDrop({
+    //     accept: 'user',
+    //     drop: (item) => setBasket((basket) => 
+    //                         !basket.includes(item) ? [...basket, item] : basket),
+    //     collect: (monitor) => ({
+    //         isOver: monitor.isOver()
+    //     })
+    // })
+
+
     useEffect(() => {
         fetch('http://localhost:9292/users/1')
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => setSingleUser(data));
 
         fetch('http://localhost:9292/users')
         .then(res => res.json())
@@ -42,10 +56,7 @@ function Drinks() {
         </div>
 
     const renderUsers = users.map((user) => (
-        <div key={user.id}>
-            <p>{user.username}</p>
-            <img id='user' src={user.image} alt="profile" /> 
-        </div> 
+        <UserCard id={user.id} name={user.username} image={user.image}/>
     ))
 
     const renderDrinks = drinks.map((drink) => (
@@ -79,4 +90,4 @@ function Drinks() {
     )
 }
 
-export default Drinks;
+export default Main;

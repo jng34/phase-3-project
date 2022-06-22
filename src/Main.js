@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import UserCard from './UserCard';
+import Form from './Form';
 
 
 function Main() {
-    const [singleUser, setSingleUser] = useState({})
     const [users, setUsers] = useState([]);
     const [drinks, setDrinks] = useState([]);
     const [emojis, setEmojis] = useState([]);
+    const [showForm, setShowForm] = useState(false);
 
     //create drop target
     // const [{ isOver }, dropRef] = useDrop({
@@ -19,44 +20,42 @@ function Main() {
     //     })
     // })
 
-
     useEffect(() => {
-        fetch('http://localhost:9292/users/1')
-        .then(res => res.json())
-        .then(data => setSingleUser(data));
-
         fetch('http://localhost:9292/users')
         .then(res => res.json())
         .then(data => setUsers(data));
 
-        fetch('http://localhost:9292/drinks')
-        .then(res => res.json())
-        .then(data => setDrinks(data));
-
         fetch('http://localhost:9292/emojis')
         .then(res => res.json())
         .then(data => setEmojis(data));
-    }, [])
 
-    //Refactor renders later with Card.js component - replace UserCard with general Card
-    const renderSingleUser =
-        <div className="card bg-warning" style={{width: "18rem"}}>
-                <img src='https://i.etsystatic.com/16421349/r/il/ef72eb/2990585977/il_794xN.2990585977_91q7.jpg' className="card-img-top" alt='student'/>
-                <div className="card-body">
-                    <h5 className="card-title">Name: Poop</h5>
-                    <p className="card-text">~~Smelly code~~</p>
-                </div>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Feeling here</li>
-                    <li className="list-group-item">Drink here</li>
-                </ul>
-                <div className="card-body">
-                    <button>Delete</button>
-                </div>
-        </div>
+        fetch('http://localhost:9292/drinks')
+        .then(res => res.json())
+        .then(data => setDrinks(data));
+    },[])
+
+    function handleClick() {
+        setShowForm((showForm) => !showForm);
+    }
+
+    function onHandleSubmit(newUser) {
+        setUsers([...users, newUser])
+    }
+
+    function handleDelete(id) {
+        fetch(`http://localhost:9292/users/${id}`, {
+            method: 'DELETE'
+        })
+        deleteUser(id)
+    }
+
+    function deleteUser(id){
+        const updatedUsers = users.filter((user) => user.id !== id)
+        setUsers(updatedUsers)
+    }
 
     const renderUsers = users.map((user) => (
-        <UserCard id={user.id} name={user.username} image={user.image}/>
+        <UserCard key={user.id} user_id={user.id} name={user.username} image={user.image} emoji_id={user.emoji_id} drink_id={user.drink_id} emojis={emojis} drinks={drinks} handleDelete={handleDelete}/>
     ))
 
     const renderDrinks = drinks.map((drink) => (
@@ -76,7 +75,10 @@ function Main() {
 
     return (
         <div className='container'>
-            {renderSingleUser}
+            <div className='buttonContainer'>
+                <button onClick={handleClick}>{showForm?'Hide Add User':'Add User'}</button>
+            </div>
+            {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
             <div id='container'>
                 {renderUsers}
             </div>

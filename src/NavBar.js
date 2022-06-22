@@ -32,14 +32,14 @@ function NavBar() {
         Home
       </NavLink>
       <NavLink
-        to="/users"
+        to="/fun"
         exact
         style={linkStyles}
         activeStyle={{
           background: "blue",
         }}
       >
-        Users
+        Fun
       </NavLink>
       <NavLink
         to="/about"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Main from './Main';
 
 
@@ -6,7 +6,8 @@ function Home() {
 
     return (
         <div className="App">
-            <h3>Where drag 'n' drop happens</h3>
+            <h3>Where drinking happens</h3>
+            <br />
             <Main />
         </div>
     )

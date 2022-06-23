@@ -40,7 +40,7 @@ function NavBar() {
       >
         Fun
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/dnd"
         exact
         style={linkStyles}
@@ -49,7 +49,7 @@ function NavBar() {
         }}
       >
         Drag N' Drop
-      </NavLink>
+      </NavLink> */}
       <NavLink
         to="/about"
         exact

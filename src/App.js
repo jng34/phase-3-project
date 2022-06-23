@@ -61,11 +61,11 @@ function App() {
             <Home users={users} emojis={emojis} drinks={drinks} onHandleSubmit={onHandleSubmit} handleDelete={handleDelete} />
           </Route>
           <Route exact path="/fun">
-            <Fun />
+            <Fun emojis={emojis} drinks={drinks} />
           </Route>
-          <Route exact path="/dnd">
+          {/* <Route exact path="/dnd">
             <DragNDrop />
-          </Route>
+          </Route> */}
           <Route exact path="/about">
             <About />
           </Route>

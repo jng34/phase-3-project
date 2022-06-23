@@ -9,7 +9,7 @@ import Header from './Header';
 import Home from './Home';
 import About from './About';
 import Fun from './Fun'
-
+import DragNDrop from './DragNDrop';
 
 function App() {
   return (
@@ -24,6 +24,9 @@ function App() {
           </Route>
           <Route exact path="/fun">
             <Fun />
+          </Route>
+          <Route exact path="/dnd">
+            <DragNDrop />
           </Route>
           <Route exact path="/about">
             <About />

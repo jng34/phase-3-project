@@ -6,7 +6,7 @@ function Home() {
 
     return (
         <div className="App">
-            <h3>Where drinking happens</h3>
+            <h4><em>"Where DRY code becomes wet..."</em></h4>
             <br />
             <Main />
         </div>

@@ -23,10 +23,7 @@ function Main() {
     useEffect(() => {
         fetch('http://localhost:9292/users')
         .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setUsers(data)
-        });
+        .then(data => setUsers(data));
 
         fetch('http://localhost:9292/emojis')
         .then(res => res.json())
@@ -61,21 +58,20 @@ function Main() {
         <UserCard key={user.id} user_id={user.id} name={user.username} image={user.image} emoji={user.emoji} drink={user.drink} handleDelete={handleDelete}/>
     ))
 
-    // emoji_id={user.emoji_id}, drink_id={user.drink_id} emojis={emojis} drinks={drinks
 
-    const renderDrinks = drinks.map((drink) => (
-        <div key={drink.id}>
-            <p>{drink.name}</p>
-            <img id='card-size' className='img-thumbnail' src={drink.image} alt="drink" /> 
-        </div> 
-    ))
+    // const renderDrinks = drinks.map((drink) => (
+    //     <div key={drink.id}>
+    //         <p>{drink.name}</p>
+    //         <img id='card-size' className='img-thumbnail' src={drink.image} alt="drink" /> 
+    //     </div> 
+    // ))
 
-    const renderEmojis= emojis.map((emoji) => (
-        <div key={emoji.id}>
-            <p>{emoji.feeling}</p>
-            <img id='card-size' src={emoji.icon} alt="emoji" /> 
-        </div> 
-    ))
+    // const renderEmojis= emojis.map((emoji) => (
+    //     <div key={emoji.id}>
+    //         <p>{emoji.feeling}</p>
+    //         <img id='card-size' src={emoji.icon} alt="emoji" /> 
+    //     </div> 
+    // ))
 
 
     return (
@@ -83,16 +79,19 @@ function Main() {
             <div className='buttonContainer'>
                 <button onClick={handleClick}>{showForm?'Hide Add User':'Add User'}</button>
             </div>
+            <br />
             {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
-            <div id='container'>
+            <br />
+            <div className="row row-cols-1 row-cols-md-5 g-4">
                 {renderUsers}
             </div>
-            <div id='container'>
+            {/* <div id='container'>
                 {renderDrinks}
             </div>
             <div id='container'>
                 {renderEmojis}
-            </div>
+            </div> */}
+            <br /><br />
         </div>
     )
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom/client';
 /* Add NavLink to import */
 import { NavLink } from "react-router-dom";
 
@@ -9,9 +8,9 @@ const linkStyles = {
   width: "auto",
   padding: "12px",
   margin: "10px 10px 6px",
-  background: "green",
+  background: "orange",
   textDecoration: "none",
-  color: "white",
+  color: "black",
 };
 
 /* define the NavBar component */
@@ -26,7 +25,7 @@ function NavBar() {
         style={linkStyles}
         /* add prop for activeStyle */
         activeStyle={{
-          background: "blue",
+          background: "skyblue",
         }}
       >
         Home
@@ -36,17 +35,27 @@ function NavBar() {
         exact
         style={linkStyles}
         activeStyle={{
-          background: "blue",
+          background: "skyblue",
         }}
       >
         Fun
+      </NavLink>
+      <NavLink
+        to="/dnd"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "skyblue",
+        }}
+      >
+        Drag N' Drop
       </NavLink>
       <NavLink
         to="/about"
         exact
         style={linkStyles}
         activeStyle={{
-          background: "blue",
+          background: "skyblue",
         }}
       >
         About

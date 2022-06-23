@@ -13,40 +13,51 @@ function Fun() {
     }, [])
 
     
-    // const renderSingleUser =
-    // <div className="card" style={{width: "18rem"}}>
-    //         <img src={singleUser.image} className="card-img-top" alt='student'/>
-    //         <div className="card-body">
-    //             <h5 className="card-title">{singleUser.username}</h5>
-    //             <p className="card-text">~~Smelly code~~</p>
-    //         </div>
-    //         <ul className="list-group list-group-flush">
-    //             <li className="list-group-item">Feeling here</li>
-    //             <li className="list-group-item">Drink here</li>
-    //         </ul>
-    //         <div className="card-body">
-    //             <button>Delete</button>
-    //         </div>
-    // </div>
-
     const renderSingleUser =
-    <div className="flip-card">
-        <div className="flip-card-inner">
-            <div className="flip-card-front">
-                <img src={singleUser.image} alt="user" style={{width: '300px', height:'300px'}} />
+    <div className="text-center bg-secondary card" style={{width: "18rem"}}>
+            <img src={singleUser.image} className="card-img-top" alt='student'/>
+            <div className="card-body">
+                <h5 className="card-title">{singleUser.username}</h5>
+                <p className="card-text">~~Smelly code~~</p>
             </div>
-            <div className="flip-card-back">
-                <h1>{singleUser.username}</h1>
-                <p>Emoji</p>
-                <p>Drink</p>
-            </div>
-        </div>
     </div>
+
+    
+    // const renderDrinks = drinks.map((drink) => (
+    //     <div key={drink.id}>
+    //         <p>{drink.name}</p>
+    //         <img id='card-size' className='img-thumbnail' src={drink.image} alt="drink" /> 
+    //     </div> 
+    // ))
+
+    // const renderEmojis= emojis.map((emoji) => (
+    //     <div key={emoji.id}>
+    //         <p>{emoji.feeling}</p>
+    //         <img id='card-size' src={emoji.icon} alt="emoji" /> 
+    //     </div> 
+    // ))
+
+
+    // const renderSingleUser =
+    // <div className="flip-card">
+    //     <div className="flip-card-inner">
+    //         <div className="flip-card-front">
+    //             <img src={singleUser.image} alt="user" style={{width: '300px', height:'300px'}} />
+    //         </div>
+    //         <div className="flip-card-back">
+    //             <h1>{singleUser.username}</h1>
+    //             <p>Emoji</p>
+    //             <p>Drink</p>
+    //         </div>
+    //     </div>
+    // </div>
 
     return (
         <div>
-            <h3>User cards here</h3>
-            {renderSingleUser}
+            <div>
+                {renderSingleUser}
+            </div>
+            
         </div>
     )
 }

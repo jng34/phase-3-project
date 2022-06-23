@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function Form({ drinks, onHandleSubmit }) {
+function Form({ drinks, onHandleSubmit, setSubmit }) {
 
     const [formData, setFormData] = useState({
         username:"",
@@ -27,13 +27,8 @@ function Form({ drinks, onHandleSubmit }) {
             body:JSON.stringify(formData),
             })
         .then(res=>res.json())
-        .then(newUser=> {
-            onHandleSubmit(newUser);
-            setFormData({
-                username:"",
-                image:""
-            });
-        })
+        .then(newUser=>onHandleSubmit(newUser));
+        setFormData({username:"",image:""});
     }
 
   return (
@@ -65,53 +60,53 @@ function Form({ drinks, onHandleSubmit }) {
         <div>
             <label>Feeling: </label><br />
             <input onClick={handleChange} defaultChecked type="radio" id="poopy" name="emoji_id" value="5" />  
-            <label for="poopy">💩</label>
+            <label htmlFor="poopy">💩</label>
             <input onClick={handleChange} type="radio" id="smirky" name="emoji_id" value="1" />  
-            <label for="smirky">😏</label>
+            <label htmlFor="smirky">😏</label>
             <input onClick={handleChange} type="radio" id="sleepy" name="emoji_id" value="2" />  
-            <label for="sleepy">😴</label>
+            <label htmlFor="sleepy">😴</label>
             <input onClick={handleChange} type="radio" id="hearty" name="emoji_id" value="3" />  
-            <label for="hearty">😍</label>
+            <label htmlFor="hearty">😍</label>
             <input onClick={handleChange} type="radio" id="angry" name="emoji_id" value="4" />  
-            <label for="angry">😡</label>
+            <label htmlFor="angry">😡</label>
             <input onClick={handleChange} type="radio" id="happy" name="emoji_id" value="6" />  
-            <label for="happy">🙂</label>
+            <label htmlFor="happy">🙂</label>
             <input onClick={handleChange} type="radio" id="party" name="emoji_id" value="7" />  
-            <label for="party">🥳</label>
+            <label htmlFor="party">🥳</label>
             <input onClick={handleChange} type="radio" id="sad" name="emoji_id" value="8" />  
-            <label for="sad">🙁</label>
+            <label htmlFor="sad">🙁</label>
         </div>
         <br />
         <div>
             <label>Drink: </label><br />
             <input onClick={handleChange} defaultChecked type="radio" id="marg1" name="drink_id" value="1" />  
-            <label for="marg1">
+            <label htmlFor="marg1">
                 {drinks[0].name}<br />
                 <img style={{height: '75px'}} src={drinks[0].image} alt='drink1'/>
             </label>
             <input onClick={handleChange} type="radio" id="marg2" name="drink_id" value="2" />  
-            <label for="marg2">
+            <label htmlFor="marg2">
                 {drinks[1].name}<br />
                 <img style={{height: '75px'}} src={drinks[1].image} alt='drink2'/>
             </label>
             <input onClick={handleChange} type="radio" id="marg3" name="drink_id" value="3" />  
-            <label for="marg3">
+            <label htmlFor="marg3">
                 {drinks[2].name}<br />
                 <img style={{height: '75px'}} src={drinks[2].image} alt='drink3'/>
             </label>
             <br />
             <input onClick={handleChange} type="radio" id="marg4" name="drink_id" value="4" />  
-            <label for="marg4">
+            <label htmlFor="marg4">
                 {drinks[3].name}<br />
                 <img style={{height: '75px'}} src={drinks[3].image} alt='drink4'/>
             </label>
             <input onClick={handleChange} type="radio" id="marg5" name="drink_id" value="5" />  
-            <label for="marg5">
+            <label htmlFor="marg5">
                 {drinks[4].name}<br />
                 <img style={{height: '75px'}} src={drinks[4].image} alt='drink5'/>
             </label>
             <input onClick={handleChange} type="radio" id="marg6" name="drink_id" value="6" />  
-            <label for="marg6">
+            <label htmlFor="marg6">
                 {drinks[5].name}<br />
                 <img style={{height: '75px'}} src={drinks[5].image} alt='drink6'/> 
             </label>

@@ -3,7 +3,7 @@ import UserCard from './UserCard';
 import Form from './Form';
 
 
-function Home({ users, emojis, drinks, onHandleSubmit, handleDelete }) {
+function Home({ users, emojis, drinks, onHandleSubmit, handleDelete, emojiData, handleEmojiClick, handleDrinkClick, setSubmit, hasSubmitted}) {
     const [showForm, setShowForm] = useState(false);
 
     function handleClick() {
@@ -12,7 +12,7 @@ function Home({ users, emojis, drinks, onHandleSubmit, handleDelete }) {
     
 
     const renderUsers = users.map((user) => (
-        <UserCard key={user.id} user_id={user.id} name={user.username} image={user.image} emoji={user.emoji} drink={user.drink} handleDelete={handleDelete}/>
+        <UserCard key={user.id} user_id={user.id} name={user.username} image={user.image} emoji={user.emoji} drink={user.drink} handleDelete={handleDelete} handleEmojiClick={handleEmojiClick} handleDrinkClick={handleDrinkClick}/>
     ))
 
     return (
@@ -25,7 +25,7 @@ function Home({ users, emojis, drinks, onHandleSubmit, handleDelete }) {
                     <button onClick={handleClick}>{showForm?'Hide Add User':'Add User'}</button>
                 </div>
                 <br />
-                {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
+                {showForm ? <Form setSubmit={setSubmit} hasSubmitted={hasSubmitted} drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
                 <br />
                 <div className="row row-cols-1 row-cols-md-5 g-4">
                     {renderUsers}

@@ -37,14 +37,14 @@ function DragNDrop() {
 
 
   return (
-    <div style={{display: 'inline-flex'}}>
-        <div>
+    <div style={{display: 'inline-flex'}}>hi
+        {/* <div>
             <img className='rounded-5' style={{height: '300px', margin: '0 200px 0 0'}} src='https://i.ibb.co/yPDjjr7/cohort-group-pic.jpg' alt='img' 
             draggable='true' onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}/>
         </div>
         <div>
             <img className='rounded-5' style={{height: '300px', margin: '0 0 0 200px'}} src='https://i.ibb.co/WcYHcKn/bar-bg.jpg' alt='bg' />
-        </div>
+        </div> */}
     </div>
   )
 }

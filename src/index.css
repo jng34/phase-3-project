@@ -35,7 +35,7 @@ code {
   width: 250px;
   height: 250px;
   /* padding: 40px; */
-  border: 1px solid #f1f1f1;
+  /* border: 1px solid #f1f1f1; */
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -65,7 +65,7 @@ code {
 
 /* Style the front side (fallback if image is missing) */
 #flip-card-front {
-  background-color: #bbb;
+  /* background-color: #bbb; */
   color: black;
 }
 

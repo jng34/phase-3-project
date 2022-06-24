@@ -1,30 +1,30 @@
 import React from 'react'
 
 
-function DrinkCard({ id, name, image }) {
+function DrinkCard({ drinkId, name, image, drinkClick }) {
 
-    const dragStart = e => {
-        console.log(e.target.id)
-        e.dataTransfer.setData('drink', e.target.id)
+    // const dragStart = e => {
+    //     console.log(e.target.id)
+    //     e.dataTransfer.setData('drink', e.target.id)
 
-        setTimeout(() => {
-            e.target.style.opacity = .5;
-        }, 0)
-    }
+    //     setTimeout(() => {
+    //         e.target.style.opacity = .5;
+    //     }, 0)
+    // }
 
 
     return (
-        // <div id={id} draggable='true' onDragStart={(e) => dragStart(e)} className="col card border border-2 border-danger float-end"  style={{width: '10rem'}}>
-        //     <img src={image} className="card-img-top" alt="drink" />
-        //     <div className="card-body">
-        //         <p className="card-text">{name}</p>
-        //     </div>
-        // </div>
-
-        <div> 
-             <img id={id} src={image} className="card-img-top" alt="drink" draggable="true" onDragStart={(e) => dragStart(e)}/>
-             <br /><br />
+        <div className="col card float-end"  style={{width: '7rem'}}>
+            <div onClick={() => drinkClick(drinkId)} className="card-body">
+            <img src={image} id={drinkId} className="card-img-top" alt="drink"  />
+                <p className="card-text text-wrap fs-6">{name}</p>
+            </div>
         </div>
+
+        // <div> 
+        //      <img id={id} src={image} className="card-img-top" alt="drink" draggable="true" onDragStart={(e) => dragStart(e)}/>
+        //      <br /><br />
+        // </div>
     )
 }
 

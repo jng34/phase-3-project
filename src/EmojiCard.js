@@ -1,31 +1,33 @@
 import React from 'react'
 
 
-function EmojiCard({ id, feeling, icon }) {
+function EmojiCard({ emojiId, feeling, icon, emojiClick }) {
 
-    const dragStart = e => {
-        e.dataTransfer.setData('emoji', e.target.id)
-        console.log(e.target.id)
+    // const dragStart = e => {
+    //     e.dataTransfer.setData('emoji', e.target.id)
+    //     console.log(e.target.id)
 
-        setTimeout(() => {
-            e.target.style.opacity = .5;
-        }, 0)
-    }
+    //     setTimeout(() => {
+    //         e.target.style.opacity = .5;
+    //     }, 0)
+    // }
 
     
 
     return (
-        // <div className="card border border-2 border-primary float-start" style={{width: '10rem'}} draggable="true" >
-        //     <img src={icon} onDragStart={(e) => dragStart(e)} className="card-img-top" alt="emoji" />
-        //     <div className="card-body">
-        //         <p className="card-text">{feeling}</p>
-        //     </div>
-        // </div>
-        
-        <div> 
-             <img id={id} src={icon} className="card-img-top" alt="emoji" draggable="true" onDragStart={(e) => dragStart(e)}/>
-             <br /><br />
+        <div className="card float-start" style={{width: '6rem'}} >
+            <div className="card-body" onClick={() => emojiClick(emojiId)}>
+            <img src={icon} id={emojiId} className="card-img-top" alt="emoji"  />
+                <p className="card-text text-wrap">{feeling}</p>
+            </div>
         </div>
+        
+        //for Drag n Drop
+        // <div> 
+        //      <img id={id} src={icon} className="card-img-top" alt="emoji" draggable="true" onDragStart={(e) => dragStart(e)}/>
+        //      <br /><br />
+        // </div>
+
     )
 }
 

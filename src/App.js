@@ -5,7 +5,7 @@ import NavBar from './NavBar';
 import Header from './Header';
 import Home from './Home';
 import About from './About';
-import Fun from './Fun'
+import FunClick from './FunClick';
 
 function App() {
   
@@ -19,7 +19,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/fun">
-            <Fun />
+            <FunClick />
           </Route>
           <Route exact path="/about">
             <About />

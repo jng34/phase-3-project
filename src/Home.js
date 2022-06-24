@@ -9,7 +9,6 @@ function Home() {
     const [showForm, setShowForm] = useState(false);
     const [ users, setUsers ] = useState([]);
     const [ drinks, setDrinks ] = useState([]);
-    const [ emojis, setEmojis ] = useState([]);
     const [ emojiData, setEmojiData ] = useState({emoji_id: 1})
     const [ drinkData, setDrinkData ] = useState({drink_id: 1})
 
@@ -19,12 +18,7 @@ function Home() {
         .then(data => setUsers(data));
     },[emojiData,drinkData])
     
-    useEffect(() => {
-        fetch('http://localhost:9292/emojis')
-        .then(res => res.json())
-        .then(data => setEmojis(data));
-    },[])
-    
+
     useEffect(() => {
         fetch('http://localhost:9292/drinks')
         .then(res => res.json())
@@ -39,7 +33,6 @@ function Home() {
     function onHandleSubmit(newUser) {
         setUsers([...users, newUser])
         console.log(users)
-        // setUsers((users)=>({...users, newUser}))
     }
   
     function handleDelete(id) {
@@ -97,7 +90,7 @@ function Home() {
                 <br />
                 {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
                 <br />
-                <div className="row row-cols-1 row-cols-md-5 g-4">
+                <div className="row row-cols-1 row-cols-md-4 g-4">
                     {renderUsers}
                 </div>
                 <br /><br />

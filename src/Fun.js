@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useDrop } from 'react-dnd';
+import DrinkCard from './DrinkCard';
+import EmojiCard from './EmojiCard';
+import DropBox from './DropBox';
 
 
-function Fun() {
+function Fun({ emojis, drinks }) {
     const [singleUser, setSingleUser] = useState({})
     //generates random number from 1-23
     const id =  Math.floor(Math.random()*(23)+1);
@@ -14,50 +18,77 @@ function Fun() {
 
     
     const renderSingleUser =
-    <div className="text-center bg-secondary card" style={{width: "18rem"}}>
+    <div className="mx-auto border border-dark border-2 card rounded" style={{width: "18rem"}}>
             <img src={singleUser.image} className="card-img-top" alt='student'/>
             <div className="card-body">
                 <h5 className="card-title">{singleUser.username}</h5>
-                <p className="card-text">~~Smelly code~~</p>
             </div>
     </div>
 
     
-    // const renderDrinks = drinks.map((drink) => (
-    //     <div key={drink.id}>
-    //         <p>{drink.name}</p>
-    //         <img id='card-size' className='img-thumbnail' src={drink.image} alt="drink" /> 
-    //     </div> 
-    // ))
+    const renderDrinks = drinks.map((drink) => (
+        <DrinkCard key={drink.id} id={drink.id} name={drink.name} image={drink.image}/>
+    ))
 
-    // const renderEmojis= emojis.map((emoji) => (
-    //     <div key={emoji.id}>
-    //         <p>{emoji.feeling}</p>
-    //         <img id='card-size' src={emoji.icon} alt="emoji" /> 
-    //     </div> 
-    // ))
+    const renderEmojis= emojis.map((emoji) => (
+        <EmojiCard key={emoji.id} id={emoji.id} feeling={emoji.feeling} icon={emoji.icon}/>
+    ))
 
+    const allowDrop = (e) => {
+        e.preventDefault();
+    }
 
-    // const renderSingleUser =
-    // <div className="flip-card">
-    //     <div className="flip-card-inner">
-    //         <div className="flip-card-front">
-    //             <img src={singleUser.image} alt="user" style={{width: '300px', height:'300px'}} />
-    //         </div>
-    //         <div className="flip-card-back">
-    //             <h1>{singleUser.username}</h1>
-    //             <p>Emoji</p>
-    //             <p>Drink</p>
-    //         </div>
-    //     </div>
-    // </div>
+    const dragEnter = (e) => {
+        console.log(e)
+    }
+
+    const drop = (e) => {
+        // e.stopPropagation();
+        e.preventDefault();
+        const emoji_id = e.dataTransfer.getData("emoji.id");
+
+        const emoji = document.getElementById(emoji_id);
+        emoji.style.display = 'block';
+
+        e.target.appendChild(emoji);
+    }
+
 
     return (
         <div>
+            <h3>Guess this user's current feeling and drink of choice</h3>
+            <br />
             <div>
                 {renderSingleUser}
             </div>
-            
+            <br /><br />
+
+
+            {/* <div className='rounded float-start' style={{padding: '0 0 0 100px'}}>
+                {renderDrinks}
+            </div>
+            <div className="mx-auto">
+                Div container for drop box
+            </div>
+            <div className='rounded float-end' style={{padding: '0 100px 0 0'}}>
+                {renderEmojis}
+            </div> */}
+
+
+            <div className="container">
+                <div className="row">
+                    <div className='col rounded'>
+                        {renderDrinks}
+                    </div>
+                    <div className="col border border-dark" onDrop={(e)=>drop(e)} onDragEnter={(e)=>dragEnter(e)} onDragOver={(e)=>allowDrop(e)} >
+                        {/* <DropBox emojis={emojis} drinks={drinks}/> */}
+                    </div>
+                    <div className='col rounded'>
+                        {renderEmojis}
+                    </div>
+                </div>
+            </div> 
+
         </div>
     )
 }

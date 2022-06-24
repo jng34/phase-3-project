@@ -4,7 +4,7 @@ function UserCard({ user_id, name, image, emoji_icon, drink_image, handleDelete,
 
     return (
         <div key={user_id} id="flip-card" className="col">
-            <div id="flip-card-inner" className='card h-100'>
+            <div id="flip-card-inner" className='card h-100 border border-dark border-1'>
                 <div id="flip-card-front">
                     <img src={image} alt="profile" className='card-img-top' />
                     <p><strong>{name}</strong></p>

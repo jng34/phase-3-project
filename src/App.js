@@ -23,7 +23,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/fun">
-            <Fun />
+            <Fun emojis={emojis} drinks={drinks} />
           </Route>
           <Route exact path="/about">
             <About />

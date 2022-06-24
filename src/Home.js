@@ -92,7 +92,7 @@ function Home() {
             <br />       
             <div className='container'>
                 <div className='buttonContainer'>
-                    <button onClick={handleClick}>{showForm?'Hide Add User':'Add User'}</button>
+                    <button onClick={handleClick}>{showForm ?'Hide Add User':'Add User'}</button>
                 </div>
                 <br />
                 {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UserCard({ user_id, name, image, emoji, drink, handleDelete, handleEmojiClick, handleDrinkClick}) {
+function UserCard({ user_id, name, image, emoji_icon, drink_image, handleDelete, handleEmojiClick, handleDrinkClick}) {
 
     return (
         <div key={user_id} id="flip-card" className="col">
@@ -11,9 +11,9 @@ function UserCard({ user_id, name, image, emoji, drink, handleDelete, handleEmoj
                 </div>
                 <div id="flip-card-back">
                     <h5>{name}</h5>
-                    <img id='emoji' src={emoji.icon} alt='img' onClick={() => handleEmojiClick(user_id)}/><br /><br />
+                    <img id='emoji' src={emoji_icon} alt='img' onClick={() => handleEmojiClick(user_id)}/><br /><br />
                     &nbsp;&nbsp;
-                    <img id='drink' src={drink.image} alt='img' onClick={() => handleDrinkClick(user_id)}/>
+                    <img id='drink' src={drink_image} alt='img' onClick={() => handleDrinkClick(user_id)}/>
                     <br/>
                     <label>Click icons to change</label>&nbsp;
                     <div className="card-footer" >

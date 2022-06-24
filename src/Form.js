@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function Form({ drinks, onHandleSubmit, setSubmit }) {
+function Form({ drinks, onHandleSubmit }) {
 
     const [formData, setFormData] = useState({
         username:"",
@@ -11,23 +11,24 @@ function Form({ drinks, onHandleSubmit, setSubmit }) {
     })
 
     function handleChange(e) {
-        console.log(e.target.name)
         const { name, value } = e.target;
         setFormData((formData)=>({...formData, [name]:value}))
     }
-
+    
     function handleSubmit(e){
         e.preventDefault();
-
+        
         fetch("http://localhost:9292/users",{
             method: "POST",
             headers: {
                 "Content-Type":"application/json"
             },
             body:JSON.stringify(formData),
-            })
+        })
         .then(res=>res.json())
-        .then(newUser=>onHandleSubmit(newUser));
+        .then(newUser=>{
+            onHandleSubmit(newUser)
+        });
         setFormData({username:"",image:""});
     }
 
@@ -35,7 +36,6 @@ function Form({ drinks, onHandleSubmit, setSubmit }) {
     <div className="container">
       <form className="add-user" onSubmit={handleSubmit}>
         <h3>Add a user!</h3>
-        {/* <label>Name: </label> */}
         <input
           type="text"
           name="username"
@@ -45,7 +45,6 @@ function Form({ drinks, onHandleSubmit, setSubmit }) {
           onChange={handleChange}
         />
         <br />
-        {/* <label>Profile Pic: </label> */}
         <input
           type="text"
           name="image"
@@ -56,7 +55,7 @@ function Form({ drinks, onHandleSubmit, setSubmit }) {
         />
         <br /><br />
 
-        {/* change id from str to int for backend */}
+
         <div>
             <label>Feeling: </label><br />
             <input onClick={handleChange} defaultChecked type="radio" id="poopy" name="emoji_id" value="5" />  

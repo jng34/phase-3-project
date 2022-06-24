@@ -71,7 +71,7 @@ code {
 
 /* Style the back side */
 #flip-card-back {
-  /* background-color: dodgerblue; */
+  background-color: skyblue;
   color: black;
   transform: rotateY(180deg);
 }

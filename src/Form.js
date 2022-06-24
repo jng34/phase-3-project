@@ -117,6 +117,10 @@ function Form({ drinks, onHandleSubmit }) {
           className="submit"
         />
       </form>
+      <br />
+      <hr />
+      <br />
+      <br />
     </div>
   )
 }

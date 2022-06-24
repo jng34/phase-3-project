@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 
 /* Add basic styling for NavLinks */
 const linkStyles = {
-  display: "inline-block",
+  display: "inline-block", 
+  fontSize: '20px',
   width: "auto",
   padding: "12px",
   margin: "10px 10px 6px",
@@ -28,7 +29,7 @@ function NavBar() {
           background: "skyblue",
         }}
       >
-        Home
+        HOME
       </NavLink>
       <NavLink
         to="/fun"
@@ -38,7 +39,7 @@ function NavBar() {
           background: "skyblue",
         }}
       >
-        Fun
+        FUN
       </NavLink>
       <NavLink
         to="/about"
@@ -48,7 +49,7 @@ function NavBar() {
           background: "skyblue",
         }}
       >
-        About
+        ABOUT
       </NavLink>
     </div>
   );

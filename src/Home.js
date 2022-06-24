@@ -80,7 +80,7 @@ function Home() {
 
     return (
 
-        <div className="App">
+        <div>
             <h4><em>"Where DRY code becomes wet..."</em></h4>
             <br />       
             <div className='container'>
@@ -89,12 +89,8 @@ function Home() {
                 </div>
                 <br />
                 {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
-                <hr />
-                <hr />
-                <hr />
-                <hr />
-                <hr />
-                <div className="row row-cols-1 row-cols-md-4 g-4">
+                {/* <hr /> */}
+                <div className="row row-cols-1 row-cols-md-5 g-4 ">
                     {renderUsers}
                 </div>
                 <br /><br />

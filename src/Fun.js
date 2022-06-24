@@ -28,19 +28,30 @@ function Fun({ emojis, drinks }) {
     
     const renderDrinks = drinks.map((drink) => (
         <DrinkCard key={drink.id} id={drink.id} name={drink.name} image={drink.image}/>
-        // <div key={drink.id} >
-        //     <p>{drink.name}</p>
-        //     <img id='card-size' className='img-thumbnail' src={drink.image} alt="drink" /> 
-        // </div> 
     ))
 
     const renderEmojis= emojis.map((emoji) => (
         <EmojiCard key={emoji.id} id={emoji.id} feeling={emoji.feeling} icon={emoji.icon}/>
-        // <div key={emoji.id} >
-        //     <p>{emoji.feeling}</p>
-        //     <img id='card-size' src={emoji.icon} alt="emoji" /> 
-        // </div> 
     ))
+
+    const allowDrop = (e) => {
+        e.preventDefault();
+    }
+
+    const dragEnter = (e) => {
+        console.log(e)
+    }
+
+    const drop = (e) => {
+        // e.stopPropagation();
+        e.preventDefault();
+        const emoji_id = e.dataTransfer.getData("emoji.id");
+
+        const emoji = document.getElementById(emoji_id);
+        emoji.style.display = 'block';
+
+        e.target.appendChild(emoji);
+    }
 
 
     return (
@@ -69,7 +80,7 @@ function Fun({ emojis, drinks }) {
                     <div className='col rounded'>
                         {renderDrinks}
                     </div>
-                    <div className="col border border-dark">
+                    <div className="col border border-dark" onDrop={(e)=>drop(e)} onDragEnter={(e)=>dragEnter(e)} onDragOver={(e)=>allowDrop(e)} >
                         {/* <DropBox emojis={emojis} drinks={drinks}/> */}
                     </div>
                     <div className='col rounded'>

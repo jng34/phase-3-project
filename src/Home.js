@@ -89,7 +89,11 @@ function Home() {
                 </div>
                 <br />
                 {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
-                <br />
+                <hr />
+                <hr />
+                <hr />
+                <hr />
+                <hr />
                 <div className="row row-cols-1 row-cols-md-4 g-4">
                     {renderUsers}
                 </div>

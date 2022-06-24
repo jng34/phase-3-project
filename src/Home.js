@@ -32,7 +32,6 @@ function Home() {
 
     function onHandleSubmit(newUser) {
         setUsers([...users, newUser])
-        console.log(users)
     }
   
     function handleDelete(id) {
@@ -89,11 +88,7 @@ function Home() {
                 </div>
                 <br />
                 {showForm ? <Form drinks={drinks} onHandleSubmit={onHandleSubmit}/> :null}
-                <hr />
-                <hr />
-                <hr />
-                <hr />
-                <hr />
+                <br />
                 <div className="row row-cols-1 row-cols-md-4 g-4">
                     {renderUsers}
                 </div>

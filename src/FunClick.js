@@ -7,17 +7,12 @@ function FunClick() {
     const [singleUser, setSingleUser] = useState({})
     const [emojis, setEmojis] = useState([])
     const [drinks, setDrinks] = useState([])
-    //set guesses by player
-    const [emojiGuess, setEmojiGuess] = useState(0)
-    const [drinkGuess, setDrinkGuess] = useState(0)
-    
 
     useEffect(() => {
         const id =  Math.floor(Math.random()*(23)+1);
         fetch(`http://localhost:9292/users/${id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setSingleUser(data)
         });
     }, [])
@@ -34,63 +29,31 @@ function FunClick() {
         .then(data => setDrinks(data));
     }, [])
 
+    function refreshPage(){window.parent.location = window.parent.location.href; }
 
-    function emojiClick(id) {
-        console.log(id)
-        setEmojiGuess(id)
-    }
-
-    function drinkClick(id) {
-        console.log(id)
-        setDrinkGuess(id)
-    }
-
-    console.log(drinkGuess)
-    console.log(emojiGuess)
-
-    
-    const renderSingleUser = 
-        <div className="mx-auto my-auto border border-dark border-2 card rounded" style={{width: "18rem"}}>
+        const renderSingleUser = 
+        <div className="mx-auto my-auto border border-dark border-2 card rounded" style={{width: "18rem", cursor: "pointer"}} onClick={()=>refreshPage()}>
                 <img src={singleUser.image} className="card-img-top" alt='student'/>
                 <div className="card-body">
                     <h5 className="card-title">{singleUser.username}</h5>
+                   
                 </div>
         </div>
 
     
     const renderDrinks = drinks.map((drink) => (
-        <DrinkCard key={drink.id} drinkId={drink.id} name={drink.name} image={drink.image} drinkClick={drinkClick}/>
+        <DrinkCard key={drink.id} drinkId={drink.id} name={drink.name} image={drink.image} ans={singleUser.drink_id}/>
     ))
 
     const renderEmojis= emojis.map((emoji) => (
-        <EmojiCard key={emoji.id} emojiId={emoji.id} feeling={emoji.feeling} icon={emoji.icon} emojiClick={emojiClick}/>
+        <EmojiCard key={emoji.id} emojiId={emoji.id} feeling={emoji.feeling} icon={emoji.icon} ans={singleUser.emoji_id}/>
     ))
-
-    
-    //condition to check for correct guess
-    if (emojiGuess !== 0 && drinkGuess !== 0) {
-        if (singleUser.emoji_id === emojiGuess && singleUser.drink_id === drinkGuess) {
-            alert('correct!')
-        } else {
-            alert('wrong!')
-            setEmojiGuess(0)
-            setDrinkGuess(0)
-        }  
-    }
-
-
 
     return (
         <div>
             <h3>Guess this user's current feeling and drink of choice</h3>
             <br />
             <br />
-            {/* <div>
-                {renderSingleUser}
-            </div>
-            <br /><br /> */}
-
-
             <div className="container">
                 <div className="row">
                     <div className='col rounded'>
@@ -98,6 +61,7 @@ function FunClick() {
                     </div>
                     <div className="col"> 
                         {renderSingleUser}
+                        <p className="card-title">{"(Click pic to refresh)"}</p>
                     </div>
                     <div className='col rounded'>
                         {renderDrinks}

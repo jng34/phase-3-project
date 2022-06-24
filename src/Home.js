@@ -32,7 +32,6 @@ function Home() {
 
     function onHandleSubmit(newUser) {
         setUsers([...users, newUser])
-        console.log(users)
     }
   
     function handleDelete(id) {

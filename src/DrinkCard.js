@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 function DrinkCard({ drinkId, name, image, ans }) {
     const [ color, setColor ] = useState("")
     function click(){
-        if (ans===drinkId){
+        if (ans===drinkId) {
             setColor("green")
-        }else{
+        } else {
             setColor("red")
         }
     }

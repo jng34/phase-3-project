@@ -6,6 +6,7 @@ import Header from './Header';
 import Home from './Home';
 import About from './About';
 import FunClick from './FunClick';
+import DragAndDrop from './DragAndDrop';
 
 function App() {
   
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/fun">
             <FunClick />
+          </Route>
+          <Route exact path="/dnd">
+            <DragAndDrop />
           </Route>
           <Route exact path="/about">
             <About />

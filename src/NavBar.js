@@ -42,6 +42,16 @@ function NavBar() {
         FUN
       </NavLink>
       <NavLink
+        to="/dnd"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "skyblue",
+        }}
+      >
+        DRAG N' DROP
+      </NavLink>
+      <NavLink
         to="/about"
         exact
         style={linkStyles}
